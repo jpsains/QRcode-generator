@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>QR code generator</h1>
+<canvas id="canvas"></canvas>
+<form action="/action_page.php">
+  <!-- <label  for="value">First name:</label> -->
+  <input type="text" placeholder="Enter website address here" id="inputValue" name="fname"><br><br>
+  <input type="button" value="Create" onclick="createQRCode(document.getElementById('inputValue').value)">
+</form>
+
+<p>Click the "Create" button and the form-data will be sent to a page on the 
+server called "action_page.php".</p>
+
+</body>
+
+<script src="node_modules/qrcode/build/qrcode.js"></script>
+<script>
+    function createQRCode(inputValue) {
+  QRCode.toCanvas(document.getElementById('canvas'), `${inputValue}`, function (error) {
+    if (error) console.error(error)
+    console.log('success!');
+  })}
+</script>
+
+</html>
