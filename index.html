@@ -30,7 +30,7 @@
 <form class="form-inline"></form>
 <input type="text" placeholder="Enter website link/phone-number/wifi details ...." id="inputValue" oninput="createQRCode(this.value)"onkeypress="createQRCode(this.value)">
 </form>
-<canvas id="canvas"></canvas>
+<canvas src="/download.png" id="canvas"></canvas>
 
 <!-- <p>Click the "Create" button and the form-data will be sent to a page on the 
 server called "action_page.php".</p> -->
@@ -48,7 +48,15 @@ server called "action_page.php".</p> -->
 
 
 
+
 <script src="qrcode.js"></script>
+<script>
+  window.onload = function createQRCode(inputValue) {
+  QRCode.toCanvas(document.getElementById('canvas'), `www.qrcodeglobal.com`, function (error) {
+    if (error) console.error(error)
+    console.log('success!');
+  })}
+  </script>
 <script>
     function createQRCode(inputValue) {
   QRCode.toCanvas(document.getElementById('canvas'), `${inputValue}`, function (error) {
